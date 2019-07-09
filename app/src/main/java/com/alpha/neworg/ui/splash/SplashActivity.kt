@@ -1,6 +1,6 @@
 package com.alpha.neworg.ui.splash
 
-import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.alpha.neworg.R
 import com.alpha.neworg.base.BaseActivity
@@ -23,7 +23,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override val toolbar: Toolbar?
         get() = null
 
-    override fun setUp(savedInstanceState: Bundle) {
-
+    override fun setUp() {
+        Toast.makeText(this@SplashActivity,"ewrt",Toast.LENGTH_LONG).show()
     }
 }

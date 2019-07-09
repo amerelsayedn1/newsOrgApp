@@ -1,7 +1,6 @@
 package com.alpha.neworg.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -28,11 +27,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     abstract val enableBack: Boolean
     abstract val toolbar: Toolbar?
 
-    protected abstract fun setUp(savedInstanceState: Bundle)
+    protected abstract fun setUp()
 
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-
+    override fun onCreate(savedInstanceState: Bundle?) {
         /** To make Full Screen */
         if (isFullScreen) {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -46,7 +44,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         }
 
 
-        super.onCreate(savedInstanceState, persistentState)
+        super.onCreate(savedInstanceState)
 
 
         /** execute binding */
@@ -54,14 +52,14 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
 
 
         /** setup view */
-        setUp(savedInstanceState!!)
+        setUp()
 
 
         /** toolbar config */
-        configureToolbar(toolbar!!, R.mipmap.baseline_arrow_back_white_36)
-
-
+        if (toolbar != null)
+            configureToolbar(toolbar!!, R.mipmap.baseline_arrow_back_white_36)
     }
+
 
     fun getViewDataBinding(): T {
         return viewDataBinding!!

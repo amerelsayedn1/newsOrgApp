@@ -1,6 +1,5 @@
 package com.alpha.neworg.ui.allnews
 
-import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.alpha.neworg.R
 import com.alpha.neworg.base.BaseActivity
@@ -24,7 +23,7 @@ class AllNewActivity:BaseActivity<ActivityAllNewsBinding>() {
     override val toolbar: Toolbar?
         get() = toolbar_main
 
-    override fun setUp(savedInstanceState: Bundle) {
+    override fun setUp() {
 
     }
 }
