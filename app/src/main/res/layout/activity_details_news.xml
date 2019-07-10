@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="#fff"
+        android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout"/>
+
+
+    <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/txt_item_image"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_main"/>
+
+
+    <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/cairo_light"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_view_more"
+            app:layout_constraintTop_toBottomOf="@+id/iv_item_image"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"/>
+
+    <Button
+            android:id="@+id/btn_view_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/cairo_light"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/txt_view_more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/colorWhite"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
