@@ -2,21 +2,28 @@ package com.alpha.neworg.ui.allnews
 
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alpha.neworg.BR
 import com.alpha.neworg.R
 import com.alpha.neworg.base.BaseActivity
+import com.alpha.neworg.data.model.ItemModel
 import com.alpha.neworg.data.networking.repository.ArticleRepo
 import com.alpha.neworg.databinding.ActivityAllNewsBinding
 import com.alpha.neworg.ui.allnews.adapter.AllNewsRecycleAdapter
+import com.alpha.neworg.ui.newsdetails.NewsDetailsActivity
+import kotlinx.android.synthetic.main.activity_all_news.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
-class AllNewActivity : BaseActivity<ActivityAllNewsBinding>() {
+
+class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAdapter.CallBack {
+
 
     private lateinit var viewmodel: AllNewsViewModel
     private lateinit var allArticleRepo: ArticleRepo
+    private var data: ArrayList<ItemModel>? = null
 
 
     companion object {
@@ -24,7 +31,6 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>() {
             return Intent(context, AllNewActivity::class.java)
         }
     }
-
 
 
     override val layoutId: Int
@@ -48,15 +54,39 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>() {
         viewmodel = AllNewsViewModel(allArticleRepo)
         viewmodel.getAllArticles()
 
+        getViewDataBinding().setVariable(BR.loading,true)
+
+
+        pullToRefresh.setOnRefreshListener {
+
+            viewmodel.getAllArticles()
+
+            pullToRefresh.isRefreshing = false
+
+        }
+
         viewmodel.data.observe(this, Observer {
 
-            val linearLayoutManager = LinearLayoutManager(this)
-            getViewDataBinding().rvData.layoutManager = linearLayoutManager
-            val adapter = AllNewsRecycleAdapter(it)
-            getViewDataBinding().rvData.adapter = adapter
+            getViewDataBinding().setVariable(BR.loading,false)
 
-            Toast.makeText(this,it.size.toString(),Toast.LENGTH_LONG).show()
+            data = it
+
+            setAdapter(data!!)
         })
 
+    }
+
+
+    override fun onItemClicked(view: View, position: Int) {
+        startActivity(NewsDetailsActivity.getStartIntent(this, data!![position]))
+    }
+
+
+    private fun setAdapter(data:ArrayList<ItemModel>){
+        val linearLayoutManager = LinearLayoutManager(this)
+        getViewDataBinding().rvData.layoutManager = linearLayoutManager
+        val adapter = AllNewsRecycleAdapter(data)
+        getViewDataBinding().rvData.adapter = adapter
+        adapter.setOnCallBack(this)
     }
 }

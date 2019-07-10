@@ -2,5 +2,5 @@
     <string name="app_name">newOrg</string>
     <string name="app_logo">شعار التطبيق</string>
     <string name="txt_item_image">صورة البوست</string>
-    <string name="txt_view_more">مشاهدة المزيد</string>
+    <string name="txt_view_more">view more</string>
 </resources>

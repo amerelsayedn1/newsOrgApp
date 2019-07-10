@@ -1,5 +1,7 @@
 package com.alpha.neworg.data.model
 
+import java.io.Serializable
+
 
 data class ItemModel(
     val sourceModel: SourceModel = SourceModel(),
@@ -10,4 +12,4 @@ data class ItemModel(
     val urlToImage: String = "",
     val publishedAt: String = "",
     val content: String = ""
-)
+):Serializable

@@ -1,3 +1,5 @@
 package com.alpha.neworg.data.model
 
-data class SourceModel(val id: Int = 0, val name: String = "")
+import java.io.Serializable
+
+data class SourceModel(val id: Int = 0, val name: String = ""):Serializable

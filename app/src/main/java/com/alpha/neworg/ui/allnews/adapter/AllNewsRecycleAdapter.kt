@@ -15,7 +15,6 @@ class AllNewsRecycleAdapter(val data: ArrayList<ItemModel>) : RecyclerView.Adapt
 
     interface CallBack {
         fun onItemClicked(view: View, position: Int)
-        fun onRemoveItem(view: View, position: Int)
     }
 
     private var callback: CallBack? = null
@@ -44,13 +43,9 @@ class AllNewsRecycleAdapter(val data: ArrayList<ItemModel>) : RecyclerView.Adapt
             item.position = position
 
 
-           /* item.ivDelete.setOnClickListener {
-                callback!!.OnRemoveItem(item.ivDelete, position)
+            item.ivItemImage.setOnClickListener{
+                callback!!.onItemClicked(itemView, position)
             }
-
-            itemView.setOnClickListener{
-                callback!!.OnItemClicked(itemView, position)
-            }*/
 
 
         }
