@@ -38,23 +38,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
 
 
-        val service = RetroClient.getClient()
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = service.getPosts(ConstantUtils.source,ConstantUtils.api_key)
-            withContext(Dispatchers.Main) {
-                try {
-                    if (response.isSuccessful) {
-                        //Do something with response e.g show to the UI.
-                    } else {
-                        Toast.makeText(this@SplashActivity,"ewrt",Toast.LENGTH_LONG).show()
-                    }
-                } catch (e: HttpException) {
-                    Toast.makeText(this@SplashActivity,"ewrt",Toast.LENGTH_LONG).show()
-                } catch (e: Throwable) {
-                    Toast.makeText(this@SplashActivity,"ewrt",Toast.LENGTH_LONG).show()
-                }
-            }
-        }
+
 
     }
 

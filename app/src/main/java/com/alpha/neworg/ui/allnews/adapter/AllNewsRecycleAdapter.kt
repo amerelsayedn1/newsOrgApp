@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alpha.neworg.data.model.ItemModel
 import com.alpha.neworg.databinding.RecycleHomeRowItemBinding
 
-class FavoriteRecycleAdapter(val data: ArrayList<ItemModel>) : RecyclerView.Adapter<FavoriteRecycleAdapter.ViewHolder>() {
+class AllNewsRecycleAdapter(val data: ArrayList<ItemModel>) : RecyclerView.Adapter<AllNewsRecycleAdapter.ViewHolder>() {
 
 
 
