@@ -5,6 +5,15 @@
 
     <data>
 
+        <variable
+                name="model"
+                type="com.alpha.neworg.data.model.ItemModel"/>
+
+
+        <variable
+                name="position"
+                type="int"/>
+
     </data>
 
     <androidx.cardview.widget.CardView
