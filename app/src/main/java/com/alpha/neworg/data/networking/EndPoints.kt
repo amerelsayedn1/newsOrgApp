@@ -8,8 +8,6 @@ import retrofit2.http.Query
 
 interface EndPoints {
 
-    /*?=techcrunch&=*/
-
     @GET("v2/top-headlines")
     suspend fun getPosts(@Query("sources") sources: String,@Query("apiKey") apiKey: String): Response<BaseModel<ArrayList<ItemModel>>>
 
