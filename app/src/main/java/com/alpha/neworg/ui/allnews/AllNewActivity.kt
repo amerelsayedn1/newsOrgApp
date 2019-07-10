@@ -14,6 +14,7 @@ import com.alpha.neworg.data.networking.repository.ArticleRepo
 import com.alpha.neworg.databinding.ActivityAllNewsBinding
 import com.alpha.neworg.ui.allnews.adapter.AllNewsRecycleAdapter
 import com.alpha.neworg.ui.newsdetails.NewsDetailsActivity
+import com.alpha.neworg.utilites.CommonUtils
 import kotlinx.android.synthetic.main.activity_all_news.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -52,9 +53,21 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
 
         allArticleRepo = ArticleRepo()
         viewmodel = AllNewsViewModel(allArticleRepo)
-        viewmodel.getAllArticles()
 
-        getViewDataBinding().setVariable(BR.loading,true)
+
+        if (isNetworkConnected) {
+            viewmodel.getAllArticles()
+            getViewDataBinding().setVariable(BR.loading, true)
+        } else {
+            CommonUtils.errorSnackBar(
+                this@AllNewActivity,
+                getViewDataBinding().container,
+                getString(R.string.message_error_check_network),
+                R.font.cairo_bold
+            )
+        }
+
+
 
 
         pullToRefresh.setOnRefreshListener {
@@ -67,7 +80,7 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
 
         viewmodel.data.observe(this, Observer {
 
-            getViewDataBinding().setVariable(BR.loading,false)
+            getViewDataBinding().setVariable(BR.loading, false)
 
             data = it
 
@@ -82,7 +95,7 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
     }
 
 
-    private fun setAdapter(data:ArrayList<ItemModel>){
+    private fun setAdapter(data: ArrayList<ItemModel>) {
         val linearLayoutManager = LinearLayoutManager(this)
         getViewDataBinding().rvData.layoutManager = linearLayoutManager
         val adapter = AllNewsRecycleAdapter(data)

@@ -3,4 +3,5 @@
     <string name="app_logo">شعار التطبيق</string>
     <string name="txt_item_image">صورة البوست</string>
     <string name="txt_view_more">view more</string>
+    <string name="message_error_check_network">please check internet connection</string>
 </resources>
