@@ -20,8 +20,22 @@ class ArticleRepo {
         val service = RetroClient.getClient()
 
 
+        val response = service.getPosts(ConstantUtils.source, ConstantUtils.api_key)
+        withContext(Dispatchers.Main) {
+            try {
+                if (response.isSuccessful) {
 
-        /*return response_dtat!!*/
+
+                } else {
+
+                }
+            } catch (e: HttpException) {
+                // Toast.makeText(this@SplashActivity, "ewrt", Toast.LENGTH_LONG).show()
+            } catch (e: Throwable) {
+                // Toast.makeText(this@SplashActivity, "ewrt", Toast.LENGTH_LONG).show()
+            }
+
+        }
     }
 
 }
