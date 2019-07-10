@@ -10,6 +10,7 @@ class AllNewsViewModel(private val articleRepo: ArticleRepo) : ViewModel() {
 
 
     fun getAllArticles() {
+
         CoroutineScope(Dispatchers.Main).launch {
             articleRepo.getAllArticles()
         }
