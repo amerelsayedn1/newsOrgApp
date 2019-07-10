@@ -1,5 +1,7 @@
 package com.alpha.neworg.ui.allnews
 
+import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -15,6 +17,14 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>() {
 
     private lateinit var viewmodel: AllNewsViewModel
     private lateinit var allArticleRepo: ArticleRepo
+
+
+    companion object {
+        fun getStartIntent(context: Context): Intent {
+            return Intent(context, AllNewActivity::class.java)
+        }
+    }
+
 
 
     override val layoutId: Int

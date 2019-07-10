@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AllNewsViewModel(val articleRepos: ArticleRepo) {
+class AllNewsViewModel(private val articleRepos: ArticleRepo) {
 
     val data: MutableLiveData<ArrayList<ItemModel>> = MutableLiveData()
 

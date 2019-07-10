@@ -13,9 +13,7 @@ class ArticleRepo {
 
 
     suspend fun getAllArticles(): Response<BaseModel<ArrayList<ItemModel>>> {
-
         val service = RetroClient.getClient()
-
         return withContext(Dispatchers.IO) {
             service.getPosts(ConstantUtils.source, ConstantUtils.api_key)
         }
