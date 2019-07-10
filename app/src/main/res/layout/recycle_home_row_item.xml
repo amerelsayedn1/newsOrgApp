@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -31,6 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
+                    bind:src="@{model.urlToImage}"
                     android:contentDescription="@string/app_name"/>
 
 
@@ -46,7 +49,7 @@
                     android:fontFamily="@font/cairo_light"
                     android:textColor="@color/colorWhite"
                     android:minHeight="40dp"
-                    android:text=""
+                    android:text="@{model.content}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:textSize="12sp"
                     android:textStyle="bold"/>

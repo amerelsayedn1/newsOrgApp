@@ -1,18 +1,22 @@
 package com.alpha.neworg.ui.allnews
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import com.alpha.neworg.data.model.ItemModel
 import com.alpha.neworg.data.networking.repository.ArticleRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AllNewsViewModel(private val articleRepo: ArticleRepo) : ViewModel() {
+class AllNewsViewModel(val articleRepos: ArticleRepo) {
+
+    val data: MutableLiveData<ArrayList<ItemModel>> = MutableLiveData()
 
 
     fun getAllArticles() {
 
         CoroutineScope(Dispatchers.Main).launch {
-            articleRepo.getAllArticles()
+            val response = articleRepos.getAllArticles()
+            data.value = response.body()!!.articles
         }
 
     }
