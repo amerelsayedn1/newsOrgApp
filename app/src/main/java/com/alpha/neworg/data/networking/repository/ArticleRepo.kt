@@ -21,7 +21,7 @@ class ArticleRepo {
 
 
         val response = service.getPosts(ConstantUtils.source, ConstantUtils.api_key)
-        withContext(Dispatchers.Main) {
+        withContext(Dispatchers.IO) {
             try {
                 if (response.isSuccessful) {
 
