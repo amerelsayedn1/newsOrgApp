@@ -56,25 +56,19 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
 
 
         if (isNetworkConnected) {
+
             viewmodel.getAllArticles()
             getViewDataBinding().setVariable(BR.loading, true)
+
+
         } else {
+
             CommonUtils.errorSnackBar(
                 this@AllNewActivity,
                 getViewDataBinding().container,
                 getString(R.string.message_error_check_network),
                 R.font.cairo_bold
             )
-        }
-
-
-
-
-        pullToRefresh.setOnRefreshListener {
-
-            viewmodel.getAllArticles()
-
-            pullToRefresh.isRefreshing = false
 
         }
 
@@ -86,6 +80,17 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
 
             setAdapter(data!!)
         })
+
+
+        pullToRefresh.setOnRefreshListener {
+
+            viewmodel.getAllArticles()
+
+            pullToRefresh.isRefreshing = false
+
+        }
+
+
 
     }
 
