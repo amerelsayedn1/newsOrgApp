@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetroClient {
 
     private var retrofit: EndPoints? = null
-    private val REQUEST_TIMEOUT = 60
+    private const val REQUEST_TIMEOUT = 60
     private var okHttpClient: OkHttpClient? = null
 
 
