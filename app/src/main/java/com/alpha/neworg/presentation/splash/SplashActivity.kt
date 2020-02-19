@@ -1,10 +1,10 @@
-package com.alpha.neworg.ui.splash
+package com.alpha.neworg.presentation.splash
 
 import androidx.appcompat.widget.Toolbar
 import com.alpha.neworg.R
 import com.alpha.neworg.base.BaseActivity
 import com.alpha.neworg.databinding.ActivitySplashBinding
-import com.alpha.neworg.ui.allnews.AllNewActivity
+import com.alpha.neworg.presentation.allnews.AllNewActivity
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

@@ -1,4 +1,4 @@
-package com.alpha.neworg.ui.allnews
+package com.alpha.neworg.presentation.allnews
 
 import androidx.lifecycle.MutableLiveData
 import com.alpha.neworg.data.model.ItemModel

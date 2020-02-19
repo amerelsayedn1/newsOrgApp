@@ -1,4 +1,4 @@
-package com.alpha.neworg.ui.allnews.adapter
+package com.alpha.neworg.presentation.allnews.adapter
 
 import android.view.LayoutInflater
 import android.view.View

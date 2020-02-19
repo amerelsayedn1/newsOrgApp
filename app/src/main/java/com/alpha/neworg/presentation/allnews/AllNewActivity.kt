@@ -1,4 +1,4 @@
-package com.alpha.neworg.ui.allnews
+package com.alpha.neworg.presentation.allnews
 
 import android.content.Context
 import android.content.Intent
@@ -12,8 +12,8 @@ import com.alpha.neworg.base.BaseActivity
 import com.alpha.neworg.data.model.ItemModel
 import com.alpha.neworg.data.networking.repository.ArticleRepo
 import com.alpha.neworg.databinding.ActivityAllNewsBinding
-import com.alpha.neworg.ui.allnews.adapter.AllNewsRecycleAdapter
-import com.alpha.neworg.ui.newsdetails.NewsDetailsActivity
+import com.alpha.neworg.presentation.allnews.adapter.AllNewsRecycleAdapter
+import com.alpha.neworg.presentation.newsdetails.NewsDetailsActivity
 import com.alpha.neworg.utilites.CommonUtils
 import kotlinx.android.synthetic.main.activity_all_news.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -21,11 +21,9 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAdapter.CallBack {
 
-
     private lateinit var viewmodel: AllNewsViewModel
     private lateinit var allArticleRepo: ArticleRepo
     private var data: ArrayList<ItemModel>? = null
-
 
     companion object {
         fun getStartIntent(context: Context): Intent {
@@ -33,18 +31,13 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
         }
     }
 
+    override val layoutId = R.layout.activity_all_news
 
-    override val layoutId: Int
-        get() = R.layout.activity_all_news
+    override val isFullScreen= false
 
-    override val isFullScreen: Boolean
-        get() = false
+    override val hideInputType = true
 
-    override val hideInputType: Boolean
-        get() = true
-
-    override val enableBack: Boolean
-        get() = true
+    override val enableBack = true
 
     override val toolbar: Toolbar?
         get() = toolbar_main
@@ -53,24 +46,10 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
 
         allArticleRepo = ArticleRepo()
         viewmodel = AllNewsViewModel(allArticleRepo)
+        setAdapter()
 
-
-        if (isNetworkConnected) {
-
-            viewmodel.getAllArticles()
-            getViewDataBinding().setVariable(BR.loading, true)
-
-
-        } else {
-
-            CommonUtils.errorSnackBar(
-                this@AllNewActivity,
-                getViewDataBinding().container,
-                getString(R.string.message_error_check_network),
-                R.font.cairo_bold
-            )
-
-        }
+        viewmodel.getAllArticles()
+        getViewDataBinding().setVariable(BR.loading, true)
 
         viewmodel.data.observe(this, Observer {
 
@@ -78,19 +57,8 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
 
             data = it
 
-            setAdapter(data!!)
+
         })
-
-
-        pullToRefresh.setOnRefreshListener {
-
-            viewmodel.getAllArticles()
-
-            pullToRefresh.isRefreshing = false
-
-        }
-
-
 
     }
 
@@ -100,10 +68,10 @@ class AllNewActivity : BaseActivity<ActivityAllNewsBinding>(), AllNewsRecycleAda
     }
 
 
-    private fun setAdapter(data: ArrayList<ItemModel>) {
+    private fun setAdapter() {
         val linearLayoutManager = LinearLayoutManager(this)
         getViewDataBinding().rvData.layoutManager = linearLayoutManager
-        val adapter = AllNewsRecycleAdapter(data)
+        val adapter = AllNewsRecycleAdapter(arrayListOf())
         getViewDataBinding().rvData.adapter = adapter
         adapter.setOnCallBack(this)
     }

@@ -1,4 +1,4 @@
-package com.alpha.balleh.base
+package com.alpha.neworg.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

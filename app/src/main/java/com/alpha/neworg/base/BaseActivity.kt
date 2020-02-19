@@ -1,18 +1,18 @@
 package com.alpha.neworg.base
 
-import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.alpha.neworg.R
 import com.alpha.neworg.utilites.CommonUtils
 
@@ -34,7 +34,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         /** To make Full Screen */
         if (isFullScreen) {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
-            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
         }
 
 
@@ -84,7 +87,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     }
 
     /** Function to hide keyboard*/
-    private fun hideKeyboard() {
+    fun hideKeyboard() {
         val imm = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         //Find the currently focused view, so we can grab the correct window token from it.
         var view = this.currentFocus

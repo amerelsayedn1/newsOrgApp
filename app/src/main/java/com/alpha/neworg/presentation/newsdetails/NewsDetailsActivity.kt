@@ -1,4 +1,4 @@
-package com.alpha.neworg.ui.newsdetails
+package com.alpha.neworg.presentation.newsdetails
 
 import android.content.Context
 import android.content.Intent
