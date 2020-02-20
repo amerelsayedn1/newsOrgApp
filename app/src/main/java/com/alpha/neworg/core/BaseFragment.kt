@@ -1,4 +1,4 @@
-package com.alpha.neworg.base
+package com.alpha.neworg.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
+abstract class BaseFragment/*<T : ViewDataBinding> : Fragment() {
 
     abstract val layoutId: Int
 
@@ -36,4 +36,4 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     }
 
     abstract fun setUp(view: View)
-}
+}*/

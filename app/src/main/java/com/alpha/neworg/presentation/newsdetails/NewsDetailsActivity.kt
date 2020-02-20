@@ -5,11 +5,10 @@ import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import com.alpha.neworg.BR
 import com.alpha.neworg.R
-import com.alpha.neworg.base.BaseActivity
 import com.alpha.neworg.data.model.ItemModel
 import com.alpha.neworg.databinding.ActivityDetailsNewsBinding
-import kotlinx.android.synthetic.main.toolbar_layout.*
 
+/*
 class NewsDetailsActivity:BaseActivity<ActivityDetailsNewsBinding>() {
 
     companion object {
@@ -40,4 +39,4 @@ class NewsDetailsActivity:BaseActivity<ActivityDetailsNewsBinding>() {
         val extraModel=intent.getSerializableExtra("extra") as ItemModel
         getViewDataBinding().setVariable(BR.model,extraModel)
     }
-}
+}*/

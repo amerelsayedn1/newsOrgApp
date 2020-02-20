@@ -9,6 +9,6 @@ import retrofit2.http.Query
 interface EndPoints {
 
     @GET("v2/top-headlines")
-    suspend fun getPosts(@Query("sources") sources: String,@Query("apiKey") apiKey: String): Response<BaseModel<ArrayList<ItemModel>>>
+    suspend fun getPosts(@Query("country") country: String,@Query("category") category: String,@Query("apiKey") apiKey: String): Response<BaseModel<ArrayList<ItemModel>>>
 
 }

@@ -14,7 +14,7 @@
             android:fullBackupContent="true"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".presentation.splash.SplashActivity">
+        <activity android:name=".presentation.allnews.AllNewActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -23,13 +23,16 @@
 
         </activity>
 
-        <activity android:name=".presentation.allnews.AllNewActivity">
+        <!--<activity android:name=".presentation.splash.SplashActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
         </activity>
+
+
 
         <activity android:name=".presentation.newsdetails.NewsDetailsActivity">
 
@@ -38,7 +41,7 @@
             </intent-filter>
 
         </activity>
-
+-->
     </application>
 
 </manifest>

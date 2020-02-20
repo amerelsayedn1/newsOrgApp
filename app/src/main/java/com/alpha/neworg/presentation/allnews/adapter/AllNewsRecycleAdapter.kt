@@ -1,53 +1,37 @@
 package com.alpha.neworg.presentation.allnews.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.alpha.neworg.core.BaseAdapter
+import com.alpha.neworg.core.BaseViewHolder
 import com.alpha.neworg.data.model.ItemModel
 import com.alpha.neworg.databinding.RecycleHomeRowItemBinding
 
-class AllNewsRecycleAdapter(val data: ArrayList<ItemModel>) : RecyclerView.Adapter<AllNewsRecycleAdapter.ViewHolder>() {
+class AllNewsRecycleAdapter(val data: ArrayList<ItemModel>) : BaseAdapter<ItemModel>(data) {
 
-
-
-
-
-    interface CallBack {
-        fun onItemClicked(view: View, position: Int)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        holder as ViewHolder
+        holder.bind(data[position])
     }
 
-    private var callback: CallBack? = null
-
-    fun setOnCallBack(callback: CallBack) {
-        this.callback = callback
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RecycleHomeRowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position)
+    override fun rowBinding(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return ViewHolder(
+            RecycleHomeRowItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
 
-    inner class ViewHolder(private val item: RecycleHomeRowItemBinding) : RecyclerView.ViewHolder(item.root) {
+    inner class ViewHolder(private val item: RecycleHomeRowItemBinding) :
+        BaseViewHolder<ItemModel>(item) {
 
-        internal fun bind(position: Int) {
-            item.model = data[position]
-            item.position = position
-
-
-            item.ivItemImage.setOnClickListener{
-                callback!!.onItemClicked(itemView, position)
-            }
-
-
+        override fun bind(data: ItemModel) {
+            item.model = data
+            item.position = adapterPosition
         }
 
     }

@@ -11,4 +11,12 @@
         app:contentInsetRight="0dp"
         app:contentInsetStart="0dp">
 
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_logo"
+        android:layout_gravity="center"/>
+
 </androidx.appcompat.widget.Toolbar>

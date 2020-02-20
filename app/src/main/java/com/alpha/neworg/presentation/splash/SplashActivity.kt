@@ -2,12 +2,13 @@ package com.alpha.neworg.presentation.splash
 
 import androidx.appcompat.widget.Toolbar
 import com.alpha.neworg.R
-import com.alpha.neworg.base.BaseActivity
+import com.alpha.neworg.core.BaseActivity
 import com.alpha.neworg.databinding.ActivitySplashBinding
 import com.alpha.neworg.presentation.allnews.AllNewActivity
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
+/*
 class SplashActivity : BaseActivity<ActivitySplashBinding>(),CoroutineScope {
 
     override val coroutineContext: CoroutineContext
@@ -41,4 +42,4 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(),CoroutineScope {
     }
 
 
-}
+}*/
