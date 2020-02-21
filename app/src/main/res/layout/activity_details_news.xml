@@ -1,73 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:bind="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
     <data>
+
         <variable
-                name="model"
-                type="com.alpha.neworg.data.model.ItemModel"/>
+            name="model"
+            type="com.alpha.neworg.data.model.ItemModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_layout" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border_white_with_stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_main"
+            app:srcCompat="@drawable/ic_splash_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="شبكة المباشر"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivLogo"
+            app:layout_constraintEnd_toStartOf="@id/ivLogo"
+            app:layout_constraintTop_toTopOf="@id/ivLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/tajawal_regular"
+            android:text="@{model.title}"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
-        <include layout="@layout/toolbar_layout"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_news_puplish_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawal_regular"
+            android:padding="5dp"
+            android:text="@{model.publishedAt}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
 
-        <ImageView
-                android:id="@+id/iv_item_image"
-                android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:scaleType="fitXY"
-                bind:src="@{model.urlToImage}"
-                android:contentDescription="@string/txt_item_image"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_main"/>
-
-        <TextView
-                android:id="@+id/tv_news_item"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:fontFamily="@font/tajawal_regular"
-                android:text="@{model.title}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_item_image"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                android:textSize="15sp"/>
-
-        <TextView
-                android:id="@+id/tv_news_puplish_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/tajawal_regular"
-                android:padding="5dp"
-                android:text="@{model.publishedAt}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_news_item"
-                android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintBottom_toTopOf="@+id/tv_desc"
-                android:textSize="15sp"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:contentDescription="@string/txt_item_image"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toBottomOf="@+id/tv_news_puplish_data"
+            bind:src="@{model.urlToImage}" />
 
 
         <TextView
-                android:id="@+id/tv_desc"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/tajawal_regular"
-                android:padding="5dp"
-                android:gravity="top|center_horizontal"
-                android:text="@{model.content}"
-                app:layout_constraintTop_toBottomOf="@+id/tv_news_puplish_data"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp"/>
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/tajawal_regular"
+            android:gravity="top|center_horizontal"
+            android:padding="5dp"
+            android:text="@{model.description}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_item_image" />
 
 
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/tajawal_black"
+            android:text="المزيد .."
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDesc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

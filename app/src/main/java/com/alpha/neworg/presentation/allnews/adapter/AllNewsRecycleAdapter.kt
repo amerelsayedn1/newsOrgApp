@@ -26,12 +26,12 @@ class AllNewsRecycleAdapter(val data: ArrayList<ItemModel>) : BaseAdapter<ItemMo
     }
 
 
-    inner class ViewHolder(private val item: RecycleHomeRowItemBinding) :
-        BaseViewHolder<ItemModel>(item) {
+    inner class ViewHolder(private val item: RecycleHomeRowItemBinding) : BaseViewHolder<ItemModel>(item) {
 
         override fun bind(data: ItemModel) {
             item.model = data
             item.position = adapterPosition
+            item.itemClick = onItemClicked
         }
 
     }

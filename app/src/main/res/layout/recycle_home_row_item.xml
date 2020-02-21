@@ -12,6 +12,10 @@
             name="model"
             type="com.alpha.neworg.data.model.ItemModel" />
 
+        <variable
+            name="itemClick"
+            type="com.alpha.neworg.core.BaseAdapter.OnItemClickedListener" />
+
 
         <variable
             name="position"
@@ -31,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:onClick="@{(view) -> itemClick.onItemClickListener(view,model)}">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivLogo"
@@ -79,7 +84,8 @@
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
                 app:layout_constraintTop_toBottomOf="@+id/tvContent"
-                bind:src="@{model.urlToImage}" />
+                bind:src="@{model.urlToImage}"
+                android:onClick="@{(view) -> itemClick.onItemClickListener(view,model)}"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

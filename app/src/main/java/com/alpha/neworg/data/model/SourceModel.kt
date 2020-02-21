@@ -1,5 +1,7 @@
 package com.alpha.neworg.data.model
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-data class SourceModel(val id: Int = 0, val name: String = ""):Serializable
+@Parcelize
+data class SourceModel(val id: Int = 0, val name: String = "") : Parcelable
